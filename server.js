@@ -9,14 +9,18 @@ const PORT = process.env.PORT || 3030
 const app = express();
 
 //middleware
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+  extended: true
+}));
 app.use(express.json());
 
 //accesses public folder
 app.use(express.static("public"));
 
 // connects to mongoose DB or local server
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+  useNewUrlParser: true
+});
 
 // routes
 require("./routes/htmlRoutes")(app)
